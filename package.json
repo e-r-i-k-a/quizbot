@@ -11,6 +11,9 @@
     "url": "git+https://github.com/e-r-i-k-a/quizbot.git"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "path": "^0.12.7",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   },
