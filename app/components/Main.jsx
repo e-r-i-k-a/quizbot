@@ -23,18 +23,24 @@ export default class Main extends Component {
     if (!this.state.slide) {
       //we have not started yet, so show the landing page
       return (
-        <Home advance={this.advance} />
+        <main>
+          <Home advance={this.advance} />
+        </main>
       )
     } else if (this.state.slide === questionArr.length + 1) {
       //we have asked all the questions, so show the ending page
       return (
-        <End />
+        <main>
+          <End />
+        </main>
       )
     } else {
       //show the question we're on
       const questionText = questionArr[this.state.slide - 1].question
       return (
-        <Question questionText={questionText} advance={this.advance} />
+        <main>
+          <Question questionText={questionText} advance={this.advance} />
+        </main>
       )
     }
   }

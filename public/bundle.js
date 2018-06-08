@@ -102,16 +102,26 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
+var _Header = __webpack_require__(/*! ./components/Header */ "./app/components/Header.jsx");
+
+var _Header2 = _interopRequireDefault(_Header);
+
 var _Main = __webpack_require__(/*! ./components/Main */ "./app/components/Main.jsx");
 
 var _Main2 = _interopRequireDefault(_Main);
+
+var _Footer = __webpack_require__(/*! ./components/Footer */ "./app/components/Footer.jsx");
+
+var _Footer2 = _interopRequireDefault(_Footer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)(_react2.default.createElement(
   'div',
   { className: 'app' },
-  _react2.default.createElement(_Main2.default, null)
+  _react2.default.createElement(_Header2.default, null),
+  _react2.default.createElement(_Main2.default, null),
+  _react2.default.createElement(_Footer2.default, null)
 ), document.getElementById('root'));
 
 /***/ }),
@@ -150,6 +160,80 @@ var End = function End(props) {
 };
 
 exports.default = End;
+
+/***/ }),
+
+/***/ "./app/components/Footer.jsx":
+/*!***********************************!*\
+  !*** ./app/components/Footer.jsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer(props) {
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Footer'
+    )
+  );
+};
+
+exports.default = Footer;
+
+/***/ }),
+
+/***/ "./app/components/Header.jsx":
+/*!***********************************!*\
+  !*** ./app/components/Header.jsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header(props) {
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Header'
+    )
+  );
+};
+
+exports.default = Header;
 
 /***/ }),
 
@@ -266,14 +350,26 @@ var Main = function (_Component) {
     value: function render() {
       if (!this.state.slide) {
         //we have not started yet, so show the landing page
-        return _react2.default.createElement(_Home2.default, { advance: this.advance });
+        return _react2.default.createElement(
+          'main',
+          null,
+          _react2.default.createElement(_Home2.default, { advance: this.advance })
+        );
       } else if (this.state.slide === _questionArr.questionArr.length + 1) {
         //we have asked all the questions, so show the ending page
-        return _react2.default.createElement(_End2.default, null);
+        return _react2.default.createElement(
+          'main',
+          null,
+          _react2.default.createElement(_End2.default, null)
+        );
       } else {
         //show the question we're on
         var questionText = _questionArr.questionArr[this.state.slide - 1].question;
-        return _react2.default.createElement(_Question2.default, { questionText: questionText, advance: this.advance });
+        return _react2.default.createElement(
+          'main',
+          null,
+          _react2.default.createElement(_Question2.default, { questionText: questionText, advance: this.advance })
+        );
       }
     }
   }]);
@@ -20074,10 +20170,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "questionArr", function() { return questionArr; });
 const questionArr = [
 	{
-		question: "Do you write code?"
+		question: "Do you write code?",
+		answer: null
 	},
 	{
-		question: "Do you really tho?"
+		question: "Do you really tho?",
+		answer: null
 	}
 ]
 

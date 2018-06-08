@@ -1,10 +1,14 @@
-import React from 'react';
+import React from 'react'
 import { render } from 'react-dom'
-import Main from './components/Main';
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
 
 render(
   <div className='app'>
-   <Main />
+    <Header />
+    <Main />
+    <Footer />
   </div>,
   document.getElementById('root')
 );
