@@ -116,6 +116,87 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 
+/***/ "./app/components/End.jsx":
+/*!********************************!*\
+  !*** ./app/components/End.jsx ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var End = function End(props) {
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Final Page'
+    )
+  );
+};
+
+exports.default = End;
+
+/***/ }),
+
+/***/ "./app/components/Home.jsx":
+/*!*********************************!*\
+  !*** ./app/components/Home.jsx ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Home = function Home(props) {
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Landing Homepage'
+    ),
+    _react2.default.createElement(
+      'button',
+      {
+        onClick: props.advance
+      },
+      'Take the Quiz!'
+    )
+  );
+};
+
+exports.default = Home;
+
+/***/ }),
+
 /***/ "./app/components/Main.jsx":
 /*!*********************************!*\
   !*** ./app/components/Main.jsx ***!
@@ -136,7 +217,19 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _questions = __webpack_require__(/*! ../../questions.js */ "./questions.js");
+var _questionArr = __webpack_require__(/*! ../../questionArr.js */ "./questionArr.js");
+
+var _Question = __webpack_require__(/*! ./Question */ "./app/components/Question.jsx");
+
+var _Question2 = _interopRequireDefault(_Question);
+
+var _Home = __webpack_require__(/*! ./Home */ "./app/components/Home.jsx");
+
+var _Home2 = _interopRequireDefault(_Home);
+
+var _End = __webpack_require__(/*! ./End */ "./app/components/End.jsx");
+
+var _End2 = _interopRequireDefault(_End);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -155,9 +248,7 @@ var Main = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
     _this.state = {
-      slide: 0,
-      yes: 0,
-      no: 0
+      slide: 0
     };
     _this.advance = _this.advance.bind(_this);
     return _this;
@@ -165,56 +256,25 @@ var Main = function (_Component) {
 
   _createClass(Main, [{
     key: 'advance',
-    value: function advance(bool) {
-      if (this.state.slide === 0) {
-        // this.props.makeHeaderVisible();
-      }
-      if (this.state.slide < _questions.questions.length + 1) {
-        var nextSlide = this.state.slide + 1;
-        var yes = bool ? this.state.yes + 1 : this.state.yes;
-        var no = bool ? this.state.no : this.state.no + 1;
-        this.setState({ slide: nextSlide, yes: yes, no: no });
-      }
-      if (this.state.slide === _questions.questions.length - 1) {
-        console.log('final question');
-      }
-      if (this.state.slide === _questions.questions.length) {
-        console.log('final slide');
+    value: function advance() {
+      if (this.state.slide <= _questionArr.questionArr.length) {
+        this.setState({ slide: this.state.slide + 1 });
       }
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'span',
-          null,
-          'Heading line 1'
-        ),
-        _react2.default.createElement(
-          'span',
-          null,
-          'Heading line 2'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Paragraph text'
-        ),
-        _react2.default.createElement(
-          'button',
-          {
-            onClick: function onClick() {
-              return _this2.advance(false);
-            }
-          },
-          'Take the Quiz!'
-        )
-      );
+      if (!this.state.slide) {
+        //we have not started yet, so show the landing page
+        return _react2.default.createElement(_Home2.default, { advance: this.advance });
+      } else if (this.state.slide === _questionArr.questionArr.length + 1) {
+        //we have asked all the questions, so show the ending page
+        return _react2.default.createElement(_End2.default, null);
+      } else {
+        //show the question we're on
+        var questionText = _questionArr.questionArr[this.state.slide - 1].question;
+        return _react2.default.createElement(_Question2.default, { questionText: questionText, advance: this.advance });
+      }
     }
   }]);
 
@@ -222,6 +282,51 @@ var Main = function (_Component) {
 }(_react.Component);
 
 exports.default = Main;
+
+/***/ }),
+
+/***/ "./app/components/Question.jsx":
+/*!*************************************!*\
+  !*** ./app/components/Question.jsx ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Question = function Question(props) {
+  var question = props.questionText;
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      question
+    ),
+    _react2.default.createElement(
+      'button',
+      {
+        onClick: props.advance
+      },
+      'Next Question!'
+    )
+  );
+};
+
+exports.default = Question;
 
 /***/ }),
 
@@ -19957,38 +20062,23 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./questions.js":
-/*!**********************!*\
-  !*** ./questions.js ***!
-  \**********************/
-/*! exports provided: questions */
+/***/ "./questionArr.js":
+/*!************************!*\
+  !*** ./questionArr.js ***!
+  \************************/
+/*! exports provided: questionArr */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "questions", function() { return questions; });
-const questions = [
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "questionArr", function() { return questionArr; });
+const questionArr = [
 	{
 		question: "Do you write code?"
 	},
 	{
-		question: "Do you build websites?"
-	},
-	{
-		question: "Are you a chemical that is used to develop photographs?"
-	},
-	{
-		question: "Do you make software?"
-	},
-	{
-		question: "Are you a person or company that builds and sells houses or other buildings on a piece of land?"
-	},
-	{
-		question: "Are you a person who lays out, at full size, the lines of a ship or vessel and prepares templates from them?"
-	},
-	{
-		question: "Do you make apps?"
-	},
+		question: "Do you really tho?"
+	}
 ]
 
 
