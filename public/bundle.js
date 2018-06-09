@@ -190,8 +190,21 @@ var Footer = function Footer(props) {
     null,
     _react2.default.createElement(
       'small',
-      null,
-      'Footer'
+      { id: 'footer-text1' },
+      _react2.default.createElement(
+        'a',
+        { href: 'https://twitter.com/erikacsamuels' },
+        '@twitter'
+      )
+    ),
+    _react2.default.createElement(
+      'small',
+      { id: 'footer-text2' },
+      _react2.default.createElement(
+        'a',
+        { href: 'https://github.com/e-r-i-k-a' },
+        '@github'
+      )
     )
   );
 };
