@@ -5,7 +5,7 @@ import Main from './components/Main'
 import Footer from './components/Footer'
 
 render(
-  <div className='app'>
+  <div id='app'>
     <Header />
     <Main />
     <Footer />

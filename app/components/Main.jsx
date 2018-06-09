@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { questionArr } from '../../questionArr.js'
 import Question from './Question'
-import Home from './Home'
+import Start from './Start'
 import End from './End'
 
 export default class Main extends Component {
@@ -24,7 +24,7 @@ export default class Main extends Component {
       //we have not started yet, so show the landing page
       return (
         <main>
-          <Home advance={this.advance} />
+          <Start advance={this.advance} />
         </main>
       )
     } else if (this.state.slide === questionArr.length + 1) {
@@ -35,7 +35,7 @@ export default class Main extends Component {
         </main>
       )
     } else {
-      //show the question we're on
+      //show the question that we're on
       const questionText = questionArr[this.state.slide - 1].question
       return (
         <main>

@@ -118,7 +118,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _reactDom.render)(_react2.default.createElement(
   'div',
-  { className: 'app' },
+  { id: 'app' },
   _react2.default.createElement(_Header2.default, null),
   _react2.default.createElement(_Main2.default, null),
   _react2.default.createElement(_Footer2.default, null)
@@ -150,7 +150,7 @@ var End = function End(props) {
 
   return _react2.default.createElement(
     'div',
-    null,
+    { id: 'end' },
     _react2.default.createElement(
       'p',
       null,
@@ -186,10 +186,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Footer = function Footer(props) {
 
   return _react2.default.createElement(
-    'div',
+    'footer',
     null,
     _react2.default.createElement(
-      'p',
+      'small',
       null,
       'Footer'
     )
@@ -223,7 +223,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Header = function Header(props) {
 
   return _react2.default.createElement(
-    'div',
+    'header',
     null,
     _react2.default.createElement(
       'p',
@@ -234,50 +234,6 @@ var Header = function Header(props) {
 };
 
 exports.default = Header;
-
-/***/ }),
-
-/***/ "./app/components/Home.jsx":
-/*!*********************************!*\
-  !*** ./app/components/Home.jsx ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Home = function Home(props) {
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'p',
-      null,
-      'Landing Homepage'
-    ),
-    _react2.default.createElement(
-      'button',
-      {
-        onClick: props.advance
-      },
-      'Take the Quiz!'
-    )
-  );
-};
-
-exports.default = Home;
 
 /***/ }),
 
@@ -307,9 +263,9 @@ var _Question = __webpack_require__(/*! ./Question */ "./app/components/Question
 
 var _Question2 = _interopRequireDefault(_Question);
 
-var _Home = __webpack_require__(/*! ./Home */ "./app/components/Home.jsx");
+var _Start = __webpack_require__(/*! ./Start */ "./app/components/Start.jsx");
 
-var _Home2 = _interopRequireDefault(_Home);
+var _Start2 = _interopRequireDefault(_Start);
 
 var _End = __webpack_require__(/*! ./End */ "./app/components/End.jsx");
 
@@ -353,7 +309,7 @@ var Main = function (_Component) {
         return _react2.default.createElement(
           'main',
           null,
-          _react2.default.createElement(_Home2.default, { advance: this.advance })
+          _react2.default.createElement(_Start2.default, { advance: this.advance })
         );
       } else if (this.state.slide === _questionArr.questionArr.length + 1) {
         //we have asked all the questions, so show the ending page
@@ -363,7 +319,7 @@ var Main = function (_Component) {
           _react2.default.createElement(_End2.default, null)
         );
       } else {
-        //show the question we're on
+        //show the question that we're on
         var questionText = _questionArr.questionArr[this.state.slide - 1].question;
         return _react2.default.createElement(
           'main',
@@ -406,7 +362,7 @@ var Question = function Question(props) {
 
   return _react2.default.createElement(
     'div',
-    null,
+    { id: 'question' },
     _react2.default.createElement(
       'p',
       null,
@@ -423,6 +379,50 @@ var Question = function Question(props) {
 };
 
 exports.default = Question;
+
+/***/ }),
+
+/***/ "./app/components/Start.jsx":
+/*!**********************************!*\
+  !*** ./app/components/Start.jsx ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Start = function Start(props) {
+
+  return _react2.default.createElement(
+    'div',
+    { id: 'start' },
+    _react2.default.createElement(
+      'p',
+      null,
+      'Landing Homepage'
+    ),
+    _react2.default.createElement(
+      'button',
+      {
+        onClick: props.advance
+      },
+      'Take the Quiz!'
+    )
+  );
+};
+
+exports.default = Start;
 
 /***/ }),
 

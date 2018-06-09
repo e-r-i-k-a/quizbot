@@ -4,7 +4,7 @@ const Question = (props) => {
   const question = props.questionText;
 
   return (
-    <div>
+    <div id='question'>
       <p>{question}</p>
       <button
             onClick={props.advance}

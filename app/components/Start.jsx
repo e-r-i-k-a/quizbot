@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Home = (props) => {
+const Start = (props) => {
 
   return (
-    <div>
+    <div id='start'>
       <p>Landing Homepage</p>
       <button
             onClick={props.advance}
@@ -14,4 +14,4 @@ const Home = (props) => {
   );
 }
 
-export default Home;
+export default Start;
