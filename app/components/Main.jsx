@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { questionArr } from '../../questionArr.js'
+import Header from './Header'
 import Question from './Question'
 import Start from './Start'
 import End from './End'
@@ -31,6 +32,7 @@ export default class Main extends Component {
       //we have asked all the questions, so show the ending page
       return (
         <main>
+          <Header />
           <End />
         </main>
       )
@@ -39,6 +41,7 @@ export default class Main extends Component {
       const questionText = questionArr[this.state.slide - 1].question
       return (
         <main>
+          <Header />
           <Question questionText={questionText} advance={this.advance} />
         </main>
       )

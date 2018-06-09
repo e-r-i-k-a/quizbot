@@ -12,30 +12,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-header {
-  top: 0;
-}
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
-  display: flex;
-  flex-flow: row-wrap;
-}
-small {
-  color: rgba(0,0,0,0.1);
-  color: #f00;
-  font-size: 1em;
-  width: 50%;
-  padding: 3%;
-}
-#footer-text1 {
-  text-align: left;
-}
-#footer-text2 {
-  text-align: right;
+  background: radial-gradient(ellipse at center, #fafafa 0%, #fafafa 60%, rgba(0,0,0,0.2) 100%);
 }
 #start,
 #end,
@@ -43,4 +20,32 @@ small {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+header,
+footer {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+}
+header {
+  top: 0;
+  justify-content: center;
+}
+nav {
+  padding: 5%;
+}
+footer {
+  bottom: 0;
+}
+small {
+  font-size: 1em;
+  width: 50%;
+  padding: 5%;
+}
+#footer-text1 {
+  text-align: left;
+}
+#footer-text2 {
+  text-align: right;
 }

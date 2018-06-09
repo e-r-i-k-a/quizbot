@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Header = (props) => {
+console.log(props)
 
   return (
     <header>
-      <p>Header</p>
+      <nav>Header</nav>
     </header>
   );
 }

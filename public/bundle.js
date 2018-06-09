@@ -102,10 +102,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
-var _Header = __webpack_require__(/*! ./components/Header */ "./app/components/Header.jsx");
-
-var _Header2 = _interopRequireDefault(_Header);
-
 var _Main = __webpack_require__(/*! ./components/Main */ "./app/components/Main.jsx");
 
 var _Main2 = _interopRequireDefault(_Main);
@@ -119,7 +115,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _reactDom.render)(_react2.default.createElement(
   'div',
   { id: 'app' },
-  _react2.default.createElement(_Header2.default, null),
   _react2.default.createElement(_Main2.default, null),
   _react2.default.createElement(_Footer2.default, null)
 ), document.getElementById('root'));
@@ -234,12 +229,13 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(props) {
+  console.log(props);
 
   return _react2.default.createElement(
     'header',
     null,
     _react2.default.createElement(
-      'p',
+      'nav',
       null,
       'Header'
     )
@@ -271,6 +267,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var _react2 = _interopRequireDefault(_react);
 
 var _questionArr = __webpack_require__(/*! ../../questionArr.js */ "./questionArr.js");
+
+var _Header = __webpack_require__(/*! ./Header */ "./app/components/Header.jsx");
+
+var _Header2 = _interopRequireDefault(_Header);
 
 var _Question = __webpack_require__(/*! ./Question */ "./app/components/Question.jsx");
 
@@ -329,6 +329,7 @@ var Main = function (_Component) {
         return _react2.default.createElement(
           'main',
           null,
+          _react2.default.createElement(_Header2.default, null),
           _react2.default.createElement(_End2.default, null)
         );
       } else {
@@ -337,6 +338,7 @@ var Main = function (_Component) {
         return _react2.default.createElement(
           'main',
           null,
+          _react2.default.createElement(_Header2.default, null),
           _react2.default.createElement(_Question2.default, { questionText: questionText, advance: this.advance })
         );
       }
