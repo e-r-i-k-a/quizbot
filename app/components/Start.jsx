@@ -1,6 +1,6 @@
 import React from 'react';
 
-const title = 'landing page'
+const startText = 'landing page'
 
 function spanSplit(str) {
 	return str.split('').map((letter, i) => (
@@ -13,7 +13,7 @@ function spanSplit(str) {
 const Start = (props) => {
   return (
     <div id='start'>
-      <span className='start-title'>{spanSplit(title)}</span>
+      <span className='start-title'>{spanSplit(startText)}</span>
       <p>lorem ipsum</p>
       <button onClick={props.advance}>
         Take the Quiz!

@@ -1,0 +1,61 @@
+gray = #fafafa
+purple = rgb(151, 56, 245)
+notPhone = 'only screen and (min-width: 480px)'
+
+@keyframes header {
+  to {
+    opacity 1
+  }
+}
+
+@keyframes end {
+  0% {
+    transform scale(1)
+  }
+  10%, 20% {
+    transform scale(0.5) rotate(-3deg)
+  }
+  30%, 50%, 70%, 90% {
+    transform scale(1.5) rotate(3deg)
+  }
+  40%, 60%, 80% {
+    transform scale(1.5) rotate(-3deg)
+  }
+  100% {
+    transform scale(1) rotate(0)
+  }
+}
+
+@keyframes start {
+  0% {
+    transform translateY(-50px)
+    animation-timing-function ease-in
+    opacity 0
+  }
+  38%, 90% {
+    transform translateY(0)
+    animation-timing-function ease-out
+  }
+  55% {
+    transform translateY(-10px)
+    animation-timing-function ease-in
+  }
+  72% {
+    transform translateY(0)
+    animation-timing-function ease-out
+    opacity 1
+  }
+  81% {
+    transform translateY(-5px)
+    animation-timing-function ease-in
+  }
+  95% {
+    transform translateY(-1px)
+    animation-timing-function ease-in
+  }
+  100% {
+    transform translateY(0)
+    animation-timing-function ease-out
+    text-shadow 1px 1px red, 2px 2px red
+  }
+}

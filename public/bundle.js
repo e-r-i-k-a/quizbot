@@ -141,15 +141,32 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var End = function End(props) {
+var endText = 'congratulations!';
 
+function spanSplit(str) {
+  var midpoint = Math.floor((str.length - 1) / 2);
+  return str.split('').map(function (letter, i) {
+    return _react2.default.createElement(
+      'span',
+      { className: 'end-letter', key: i, style: { '--delay': i <= midpoint ? i : str.length - 1 - i } },
+      letter
+    );
+  });
+}
+
+var End = function End(props) {
   return _react2.default.createElement(
     'div',
     { id: 'end' },
     _react2.default.createElement(
+      'span',
+      { className: 'end-text' },
+      spanSplit(endText)
+    ),
+    _react2.default.createElement(
       'p',
       null,
-      'Final Page'
+      'lorem ipsum'
     )
   );
 };
@@ -414,7 +431,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var title = 'landing page';
+var startText = 'landing page';
 
 function spanSplit(str) {
   return str.split('').map(function (letter, i) {
@@ -437,7 +454,7 @@ var Start = function Start(props) {
     _react2.default.createElement(
       'span',
       { className: 'start-title' },
-      spanSplit(title)
+      spanSplit(startText)
     ),
     _react2.default.createElement(
       'p',
