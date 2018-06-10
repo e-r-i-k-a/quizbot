@@ -1,11 +1,11 @@
 import React from 'react';
 
+const headerText = 'this is the header text'
+
 const Header = (props) => {
 
   return (
-    <header>
-      <nav>Header</nav>
-    </header>
+    <header>{headerText}</header>
   );
 }
 

@@ -37,7 +37,6 @@ button:active {
 .start-letter {
   color: #9738f5;
   z-index: 0;
-  opacity: 1;
   font-size: 2em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -56,9 +55,15 @@ footer {
 header {
   top: 0;
   justify-content: center;
-}
-nav {
   padding: 5%;
+  color: #9738f5;
+  z-index: 0;
+  font-size: 1em;
+  opacity: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 1px 1px #f00, 1px 1px #f00;
+  animation: header 1s both;
 }
 footer {
   bottom: 0;
@@ -227,5 +232,25 @@ small {
     transform: translateY(0);
     animation-timing-function: ease-out;
     text-shadow: 1px 1px #f00, 2px 2px #f00;
+  }
+}
+@-moz-keyframes header {
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes header {
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes header {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes header {
+  to {
+    opacity: 1;
   }
 }

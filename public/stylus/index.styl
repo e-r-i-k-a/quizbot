@@ -38,7 +38,6 @@ button:active
 .start-letter
   color purple
   z-index 0
-  opacity 1
   font-size 2em
   letter-spacing .05em
   text-transform uppercase
@@ -56,8 +55,15 @@ header, footer
 header
   top 0
   justify-content center
-nav
   padding 5%
+  color purple
+  z-index 0
+  font-size 1em
+  opacity 0
+  text-transform uppercase
+  font-weight 600
+  text-shadow 1px 1px red, 1px 1px red
+  animation header 1s both
 footer
   bottom 0
 small
@@ -104,6 +110,12 @@ small
     transform translateY(0)
     animation-timing-function ease-out
     text-shadow 1px 1px red, 2px 2px red
+  }
+}
+
+@keyframes header {
+  to {
+    opacity 1
   }
 }
 
