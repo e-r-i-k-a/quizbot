@@ -229,7 +229,6 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(props) {
-  console.log(props);
 
   return _react2.default.createElement(
     'header',
@@ -419,33 +418,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var title = 'landing page';
 
+function spanSplit(str) {
+  return str.split('').map(function (letter, i) {
+    return letter === ' ' ? _react2.default.createElement(
+      'span',
+      { className: 'start-letter', key: i },
+      '\xA0'
+    ) : _react2.default.createElement(
+      'span',
+      { className: 'start-letter', key: i, style: { '--delay': i } },
+      letter
+    );
+  });
+}
+
 var Start = function Start(props) {
   return _react2.default.createElement(
     'div',
     { id: 'start' },
     _react2.default.createElement(
-      'div',
-      { id: 'start-title' },
-      title.split('').map(function (letter, i) {
-        return letter === ' ' ? _react2.default.createElement(
-          'span',
-          { className: 'start-letter',
-            key: i },
-          '\xA0'
-        ) : _react2.default.createElement(
-          'span',
-          {
-            className: 'start-letter',
-            key: i, style: { '--delay': i } },
-          letter
-        );
-      })
+      'span',
+      { className: 'start-title' },
+      spanSplit(title)
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'lorem ipsum'
     ),
     _react2.default.createElement(
       'button',
-      {
-        onClick: props.advance
-      },
+      { onClick: props.advance },
       'Take the Quiz!'
     )
   );

@@ -1,27 +1,23 @@
 import React from 'react';
+
 const title = 'landing page'
+
+function spanSplit(str) {
+	return str.split('').map((letter, i) => (
+		letter === ' ' ?
+      <span className ='start-letter' key={i}>&nbsp;</span>
+      : <span className ='start-letter' key={i} style={{'--delay':i}}>{letter}</span>
+	));
+}
 
 const Start = (props) => {
   return (
     <div id='start'>
-      <div id='start-title'>
-        {title.split('').map((letter, i) => {
-          return (
-            letter === ' ' ?
-            <span className='start-letter'
-            key={i}>&nbsp;</span>
-            : <span
-            className='start-letter'
-            key={i} style={{'--delay':i}}>{letter}</span>
-          )
-        })}
-      </div>
-
-      <button
-        onClick={props.advance}
-      >
+      <span className='start-title'>{spanSplit(title)}</span>
+      <p>lorem ipsum</p>
+      <button onClick={props.advance}>
         Take the Quiz!
-				</button>
+			</button>
     </div>
   );
 }
