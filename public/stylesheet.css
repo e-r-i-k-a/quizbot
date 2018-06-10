@@ -253,6 +253,7 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .start-letter {
   color: #9738f5;
@@ -275,6 +276,12 @@ button:active {
   animation: end 1s both;
   animation-delay: calc(var(--delay) * 0.01s);
   display: inline-block;
+}
+#end-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 header,
 footer {

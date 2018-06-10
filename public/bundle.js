@@ -135,11 +135,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var endText = 'congratulations!';
 
@@ -154,22 +162,116 @@ function spanSplit(str) {
   });
 }
 
-var End = function End(props) {
-  return _react2.default.createElement(
-    'div',
-    { id: 'end' },
-    _react2.default.createElement(
-      'span',
-      { className: 'end-text' },
-      spanSplit(endText)
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      'lorem ipsum'
-    )
-  );
-};
+var End = function (_Component) {
+  _inherits(End, _Component);
+
+  function End(props) {
+    _classCallCheck(this, End);
+
+    return _possibleConstructorReturn(this, (End.__proto__ || Object.getPrototypeOf(End)).call(this, props));
+  }
+
+  _createClass(End, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      var pieces = [];
+      var numberOfPieces = 50;
+      var lastUpdateTime = Date.now();
+      function randomColor() {
+        var colors = ['#fff1b2', '#eedac5', '#ddc3d8', '#ccacec', '#bb95ff'];
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+      function update() {
+        var now = Date.now(),
+            dt = now - lastUpdateTime;
+        for (var i = pieces.length - 1; i >= 0; i--) {
+          var p = pieces[i];
+          if (p.y > canvas.height) {
+            pieces.splice(i, 1);
+            continue;
+          }
+          p.y += p.gravity * dt;
+          p.rotation += p.rotationSpeed * dt;
+        }
+        while (pieces.length < numberOfPieces) {
+          pieces.push(new Piece(Math.random() * canvas.width, -20));
+        }
+        lastUpdateTime = now;
+        setTimeout(update, 1);
+      }
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(function (p) {
+          ctx.save();
+          ctx.fillStyle = p.color;
+          ctx.translate(p.x + p.size / 2, p.y + p.size / 2);
+          ctx.rotate(p.rotation);
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+        });
+        requestAnimationFrame(draw);
+      }
+      function Piece(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = (Math.random() * 0.5 + 0.75) * 15;
+        this.gravity = (Math.random() * 0.5 + 0.75) * 0.1;
+        this.rotation = Math.PI * 2 * Math.random();
+        this.rotationSpeed = Math.PI * 2 * (Math.random() - 0.5) * 0.001;
+        this.color = randomColor();
+      }
+      while (pieces.length < numberOfPieces) {
+        pieces.push(new Piece(Math.random() * canvas.width, Math.random() * canvas.height));
+      }
+      update();
+      draw();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { id: 'end' },
+        _react2.default.createElement('canvas', { id: 'canvas' }),
+        _react2.default.createElement(
+          'div',
+          { id: 'end-text' },
+          _react2.default.createElement(
+            'span',
+            { className: 'end-letters' },
+            spanSplit(endText)
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'lorem ipsum'
+          )
+        )
+      );
+    }
+  }]);
+
+  return End;
+}(_react.Component);
+
+// const End = (props) => {
+//   let canvas = document.getElementById('canvas')
+//   console.log(canvas)
+//   return (
+//     <div id='end'>
+//       <canvas id='canvas'></canvas>
+//       <span className='end-text'>{spanSplit(endText)}</span>
+//       <p>lorem ipsum</p>
+//     </div>
+//   );
+// }
+
+// export default End;
+
 
 exports.default = End;
 
