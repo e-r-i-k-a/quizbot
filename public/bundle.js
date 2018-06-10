@@ -417,15 +417,29 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Start = function Start(props) {
+var title = 'landing page';
 
+var Start = function Start(props) {
   return _react2.default.createElement(
     'div',
     { id: 'start' },
     _react2.default.createElement(
-      'p',
-      null,
-      'Landing Homepage'
+      'div',
+      { id: 'start-title' },
+      title.split('').map(function (letter, i) {
+        return letter === ' ' ? _react2.default.createElement(
+          'span',
+          { className: 'start-letter',
+            key: i },
+          '\xA0'
+        ) : _react2.default.createElement(
+          'span',
+          {
+            className: 'start-letter',
+            key: i, style: { '--delay': i } },
+          letter
+        );
+      })
     ),
     _react2.default.createElement(
       'button',
