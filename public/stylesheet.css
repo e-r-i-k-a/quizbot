@@ -1,21 +1,65 @@
-@-moz-keyframes header {
+@-moz-keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
-@-webkit-keyframes header {
+@-webkit-keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
-@-o-keyframes header {
+@-o-keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
-@keyframes header {
+@keyframes fadeIn {
   to {
     opacity: 1;
+  }
+}
+@-moz-keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-o-keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 @-moz-keyframes end {
@@ -275,6 +319,9 @@ p {
 }
 #start-text {
   margin: 10% 10% 5% 10%;
+  animation: slideIn 1s both;
+  animation-delay: 1s;
+  visibility: hidden;
 }
 .end-letter {
   color: #9738f5;
@@ -310,7 +357,7 @@ header {
   font-size: 1em;
   opacity: 0;
   text-shadow: 1px 1px #aceccc, 2px 2px #aceccc;
-  animation: header 1s both;
+  animation: fadeIn 1s both;
   font-family: 'Bungee Shade';
 }
 footer {

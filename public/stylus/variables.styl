@@ -13,9 +13,21 @@ purple2 = #bb95ff
 
 notPhone = 'only screen and (min-width: 480px)'
 
-@keyframes header {
+@keyframes fadeIn {
   to {
     opacity 1
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity 0
+    transform translateY(-40px)
+  }
+  to {
+    visibility visible
+    opacity 1
+    transform translateY(0)
   }
 }
 
