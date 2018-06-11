@@ -24,33 +24,44 @@ button
   color darkPurple
   text-align center
   font-weight 1000
+  z-index 1
 button:active
   color white
   background-color: purple
 p
   color darkPurple
-  font-size 18px
+  font-size 22px
   font-weight bold
-  font-family 'Indie Flower'
+  font-family 'Gaegu'
+  margin-left 5%
+  margin-right 5%
 #start, #end, #question
   display flex
   flex-direction column
   align-items center
   justify-content center
+  text-align center
+#question-text
+  font-size 25px
+#emoji
+  font-size 50px
+  margin 0
 
 //start page
 .start-letter
   color purple
-  z-index 0
-  font-size 2em
+  font-size 2.5em
   letter-spacing .05em
   font-weight 1000
   animation start 1s both
-  animation-delay calc(var(--delay) * .1s)
+  animation-delay calc(var(--delay) * .05s)
   display inline-block
   font-family 'Bungee Shade'
+#start-title
+  display flex
+  flex-direction column
+  align-items center
 #start-text
-  margin 10% 10% 5% 10%
   animation slideIn 1s both
   animation-delay 1s
   visibility hidden
@@ -58,33 +69,35 @@ p
 //end page
 .end-letter
   color purple
-  z-index 0
-  font-size 1.5em
-  letter-spacing .05em
+  font-size 1.4em
   font-weight 1000
   text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
-  animation end 1s both
+  animation end 2s both
   animation-delay calc(var(--delay) * .01s)
   display inline-block
   font-family 'Bungee Shade'
-#end-text
+#end-title
   position absolute
   display flex
   flex-direction column
   align-items center
+#end-text
+  width 100%
+#end-heading
+  margin 10% 10% 5% 10%
+  font-weight bold
+  font-size 22px
 
 //header and footer
 header, footer
   position absolute
   width 100%
-  z-index 1
   display flex
 header
   top 0
   justify-content center
-  padding 5%
+  padding 20px
   color purple
-  z-index 0
   font-size 1em
   opacity 0
   text-shadow 1px 1px green, 2px 2px green
@@ -92,11 +105,11 @@ header
   font-family 'Bungee Shade'
 footer
   bottom 0
-  font-family 'Indie Flower'
+  font-family 'Gaegu'
 small
-  font-size 1em
+  font-size 1.2em
   width 50%
-  padding 5%
+  padding 20px
 #footer-text1
   text-align left
 #footer-text2
@@ -107,3 +120,13 @@ small
     transition  all 0.2s
     color white
     background-color: purple
+  body, footer
+    max-width 980px
+    margin auto
+  #start-text
+    margin-right 150px
+    margin-left 150px
+  .end-letter
+    font-size 3em
+#end-title
+  margin-top 30px

@@ -233,23 +233,63 @@ var End = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var yes = this.props.yes;
+      var no = this.props.no;
+      var paragraph = yes > no ? _react2.default.createElement(
+        'div',
+        { id: 'end-text' },
+        _react2.default.createElement(
+          'p',
+          { id: 'end-heading' },
+          'You\'re definitely a camel!'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Don\'t let anyone tell you that you\'re anything less.'
+        ),
+        _react2.default.createElement(
+          'p',
+          { id: 'emoji' },
+          '\uD83D\uDC2B\uD83D\uDC2B\uD83D\uDC2B'
+        )
+      ) : _react2.default.createElement(
+        'div',
+        { id: 'end-text' },
+        _react2.default.createElement(
+          'p',
+          { id: 'end-heading' },
+          _react2.default.createElement(
+            'bold',
+            null,
+            'You\'re probably a camel!'
+          )
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'There\'s no way to be completely sure.  Even if you\'re not a camel, don\'t let others define what you know yourself to be.'
+        ),
+        _react2.default.createElement(
+          'p',
+          { id: 'emoji' },
+          '\uD83D\uDC2B\uD83D\uDC2B\uD83D\uDC2B'
+        )
+      );
+
       return _react2.default.createElement(
         'div',
         { id: 'end' },
         _react2.default.createElement('canvas', { id: 'canvas' }),
         _react2.default.createElement(
           'div',
-          { id: 'end-text' },
+          { id: 'end-title' },
           _react2.default.createElement(
             'span',
             { className: 'end-letters' },
             spanSplit(endText)
           ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'lorem ipsum'
-          )
+          paragraph
         )
       );
     }
@@ -301,7 +341,7 @@ var Footer = function Footer(props) {
       { id: 'footer-text2' },
       _react2.default.createElement(
         'a',
-        { href: 'https://github.com/e-r-i-k-a' },
+        { href: 'https://github.com/e-r-i-k-a/quizbot' },
         '@github'
       )
     )
@@ -332,7 +372,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var headerText = 'this is the header text';
+var headerText = 'Am I a camel?';
 
 var Header = function Header(props) {
 
@@ -402,7 +442,9 @@ var Main = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
     _this.state = {
-      slide: 0
+      slide: 0,
+      yes: 0,
+      no: 0
     };
     _this.advance = _this.advance.bind(_this);
     return _this;
@@ -410,9 +452,19 @@ var Main = function (_Component) {
 
   _createClass(Main, [{
     key: 'advance',
-    value: function advance() {
+    value: function advance(answer) {
       if (this.state.slide <= _questionArr.questionArr.length) {
-        this.setState({ slide: this.state.slide + 1 });
+        var nextSlide = this.state.slide + 1;
+        if (answer === 'y') {
+          this.setState({ slide: nextSlide,
+            yes: this.state.yes + 1 });
+        }
+        if (answer === 'n') {
+          this.setState({ slide: nextSlide,
+            no: this.state.no + 1 });
+        } else {
+          this.setState({ slide: nextSlide });
+        }
       }
     }
   }, {
@@ -431,7 +483,7 @@ var Main = function (_Component) {
           'main',
           null,
           _react2.default.createElement(_Header2.default, null),
-          _react2.default.createElement(_End2.default, null)
+          _react2.default.createElement(_End2.default, { yes: this.state.yes, no: this.state.no })
         );
       } else {
         //show the question that we're on
@@ -481,7 +533,7 @@ var Question = function Question(props) {
     { id: 'question' },
     _react2.default.createElement(
       'p',
-      null,
+      { id: 'question-text' },
       question
     ),
     _react2.default.createElement(
@@ -489,12 +541,16 @@ var Question = function Question(props) {
       { id: 'question-buttons' },
       _react2.default.createElement(
         'button',
-        { onClick: props.advance },
+        { onClick: function onClick() {
+            return props.advance('y');
+          } },
         'Yes'
       ),
       _react2.default.createElement(
         'button',
-        { onClick: props.advance },
+        { onClick: function onClick() {
+            return props.advance('n');
+          } },
         'No'
       )
     )
@@ -525,7 +581,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var title = 'am i wrong?';
+var title1 = 'am i';
+var title2 = 'a camel?';
 
 function spanSplit(str) {
   return str.split('').map(function (letter, i) {
@@ -535,7 +592,7 @@ function spanSplit(str) {
       '\xA0'
     ) : _react2.default.createElement(
       'span',
-      { className: 'start-letter', key: i, style: { '--delay': i } },
+      { className: 'start-letter', key: i, style: { '--delay': str === title1 ? i : title1.length + i } },
       letter
     );
   });
@@ -547,13 +604,23 @@ var Start = function Start(props) {
     { id: 'start' },
     _react2.default.createElement(
       'span',
-      { className: 'start-title' },
-      spanSplit(title)
+      { id: 'start-title' },
+      _react2.default.createElement(
+        'span',
+        null,
+        spanSplit(title1)
+      ),
+      _react2.default.createElement('br', null),
+      _react2.default.createElement(
+        'span',
+        null,
+        spanSplit(title2)
+      )
     ),
     _react2.default.createElement(
       'p',
       { id: 'start-text' },
-      'Ever wonder if you\'re racist? Maybe you\'ve said some controversial things or offended someone.  Take the quiz and find out.'
+      'Ever wonder if you\'re a camel? Maybe you have long legs and a big-lipped snout, but you\'re not sure.  Take the quiz and find out.'
     ),
     _react2.default.createElement(
       'button',
@@ -20311,12 +20378,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "questionArr", function() { return questionArr; });
 const questionArr = [
 	{
-		question: "Do you write code?",
-		answer: null
+		question: 'Can you withstand long periods of time without water?'
 	},
 	{
-		question: "Do you really tho?",
-		answer: null
+		question: 'Do you provide food (milk and meat) or textiles (fiber from your hair)?'
+	},
+	{
+		question: 'Do you have fatty despoits (or "humps") on your body?'
+	},
+	{
+		question: 'Do you wear a thick coat that insulates you from intense heat?'
+	},
+	{
+		question: 'Do you have a third, clear eyelid or two rows of long lashes to protect your eyes from blowing sand?'
+	},
+	{
+		question: 'Are you a means of transport for passengers or cargo?'
+	},
+	{
+		question: 'Do you make a variety of moans, groans, and deep, throaty bellows?'
 	}
 ]
 

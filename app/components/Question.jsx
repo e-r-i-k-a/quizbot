@@ -5,10 +5,10 @@ const Question = (props) => {
 
   return (
     <div id='question'>
-      <p>{question}</p>
+      <p id='question-text'>{question}</p>
       <div id='question-buttons'>
-        <button onClick={props.advance}>Yes</button>
-        <button onClick={props.advance}>No</button>
+        <button onClick={()=>props.advance('y')}>Yes</button>
+        <button onClick={()=>props.advance('n')}>No</button>
       </div>
     </div>
   );

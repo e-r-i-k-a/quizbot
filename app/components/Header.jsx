@@ -1,6 +1,6 @@
 import React from 'react';
 
-const headerText = 'this is the header text'
+const headerText = 'Am I a camel?'
 
 const Header = (props) => {
 
