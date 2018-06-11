@@ -6,11 +6,10 @@ const Question = (props) => {
   return (
     <div id='question'>
       <p>{question}</p>
-      <button
-            onClick={props.advance}
-          >
-            Next Question!
-				</button>
+      <div id='question-buttons'>
+        <button onClick={props.advance}>Yes</button>
+        <button onClick={props.advance}>No</button>
+      </div>
     </div>
   );
 }

@@ -17,15 +17,21 @@ main
   background radial-gradient(ellipse at center, gray 0%, gray 60%, rgba(0,0,0,.2) 100%)
 button
   padding 0.3em
+  margin .5em 1.5em 0 1.5em
   border 1px solid purple
   border-radius 0.3em
-  font-weight 550
   font-size 1em
-  color black
+  color darkPurple
   text-align center
+  font-weight 1000
 button:active
   color white
   background-color: purple
+p
+  color darkPurple
+  font-size 18px
+  font-weight bold
+  font-family 'Indie Flower'
 #start, #end, #question
   display flex
   flex-direction column
@@ -38,11 +44,13 @@ button:active
   z-index 0
   font-size 2em
   letter-spacing .05em
-  text-transform uppercase
   font-weight 1000
   animation start 1s both
   animation-delay calc(var(--delay) * .1s)
   display inline-block
+  font-family 'Bungee Shade'
+#start-text
+  margin 10% 10% 5% 10%
 
 //end page
 .end-letter
@@ -50,11 +58,12 @@ button:active
   z-index 0
   font-size 1.5em
   letter-spacing .05em
-  text-transform uppercase
   font-weight 1000
+  text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
   animation end 1s both
   animation-delay calc(var(--delay) * .01s)
   display inline-block
+  font-family 'Bungee Shade'
 #end-text
   position absolute
   display flex
@@ -75,12 +84,12 @@ header
   z-index 0
   font-size 1em
   opacity 0
-  text-transform uppercase
-  font-weight 600
-  text-shadow 1px 1px red, 1px 1px red
+  text-shadow 1px 1px green, 2px 2px green
   animation header 1s both
+  font-family 'Bungee Shade'
 footer
   bottom 0
+  font-family 'Indie Flower'
 small
   font-size 1em
   width 50%

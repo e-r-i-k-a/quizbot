@@ -83,17 +83,3 @@ export default class End extends Component {
     )
   }
 }
-
-// const End = (props) => {
-//   let canvas = document.getElementById('canvas')
-//   console.log(canvas)
-//   return (
-//     <div id='end'>
-//       <canvas id='canvas'></canvas>
-//       <span className='end-text'>{spanSplit(endText)}</span>
-//       <p>lorem ipsum</p>
-//     </div>
-//   );
-// }
-
-// export default End;

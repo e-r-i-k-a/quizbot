@@ -1,6 +1,6 @@
 import React from 'react';
 
-const startText = 'landing page'
+const title = 'am i wrong?'
 
 function spanSplit(str) {
 	return str.split('').map((letter, i) => (
@@ -13,8 +13,8 @@ function spanSplit(str) {
 const Start = (props) => {
   return (
     <div id='start'>
-      <span className='start-title'>{spanSplit(startText)}</span>
-      <p>lorem ipsum</p>
+      <span className='start-title'>{spanSplit(title)}</span>
+      <p id='start-text'>Ever wonder if you're racist? Maybe you've said some controversial things or offended someone.  Take the quiz and find out.</p>
       <button onClick={props.advance}>
         Take the Quiz!
 			</button>

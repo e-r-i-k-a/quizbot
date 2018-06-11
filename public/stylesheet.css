@@ -116,7 +116,7 @@
   100% {
     transform: translateY(0);
     animation-timing-function: ease-out;
-    text-shadow: 1px 1px #f00, 2px 2px #f00;
+    text-shadow: 1px 1px #aceccc, 5px 2px #aceccc;
   }
 }
 @-webkit-keyframes start {
@@ -149,7 +149,7 @@
   100% {
     transform: translateY(0);
     animation-timing-function: ease-out;
-    text-shadow: 1px 1px #f00, 2px 2px #f00;
+    text-shadow: 1px 1px #aceccc, 5px 2px #aceccc;
   }
 }
 @-o-keyframes start {
@@ -182,7 +182,7 @@
   100% {
     transform: translateY(0);
     animation-timing-function: ease-out;
-    text-shadow: 1px 1px #f00, 2px 2px #f00;
+    text-shadow: 1px 1px #aceccc, 5px 2px #aceccc;
   }
 }
 @keyframes start {
@@ -215,7 +215,7 @@
   100% {
     transform: translateY(0);
     animation-timing-function: ease-out;
-    text-shadow: 1px 1px #f00, 2px 2px #f00;
+    text-shadow: 1px 1px #aceccc, 5px 2px #aceccc;
   }
 }
 body {
@@ -236,16 +236,23 @@ main {
 }
 button {
   padding: 0.3em;
+  margin: 0.5em 1.5em 0 1.5em;
   border: 1px solid #9738f5;
   border-radius: 0.3em;
-  font-weight: 550;
   font-size: 1em;
-  color: #000;
+  color: #7a678d;
   text-align: center;
+  font-weight: 1000;
 }
 button:active {
   color: #fff;
   background-color: #9738f5;
+}
+p {
+  color: #7a678d;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Indie Flower';
 }
 #start,
 #end,
@@ -260,22 +267,26 @@ button:active {
   z-index: 0;
   font-size: 2em;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
   font-weight: 1000;
   animation: start 1s both;
   animation-delay: calc(var(--delay) * 0.1s);
   display: inline-block;
+  font-family: 'Bungee Shade';
+}
+#start-text {
+  margin: 10% 10% 5% 10%;
 }
 .end-letter {
   color: #9738f5;
   z-index: 0;
   font-size: 1.5em;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
   font-weight: 1000;
+  text-shadow: -1px 0 #aceccc, 0 1px #aceccc, 1px 0 #aceccc, 0 -1px #aceccc;
   animation: end 1s both;
   animation-delay: calc(var(--delay) * 0.01s);
   display: inline-block;
+  font-family: 'Bungee Shade';
 }
 #end-text {
   position: absolute;
@@ -298,13 +309,13 @@ header {
   z-index: 0;
   font-size: 1em;
   opacity: 0;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: 1px 1px #f00, 1px 1px #f00;
+  text-shadow: 1px 1px #aceccc, 2px 2px #aceccc;
   animation: header 1s both;
+  font-family: 'Bungee Shade';
 }
 footer {
   bottom: 0;
+  font-family: 'Indie Flower';
 }
 small {
   font-size: 1em;

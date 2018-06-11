@@ -258,21 +258,6 @@ var End = function (_Component) {
   return End;
 }(_react.Component);
 
-// const End = (props) => {
-//   let canvas = document.getElementById('canvas')
-//   console.log(canvas)
-//   return (
-//     <div id='end'>
-//       <canvas id='canvas'></canvas>
-//       <span className='end-text'>{spanSplit(endText)}</span>
-//       <p>lorem ipsum</p>
-//     </div>
-//   );
-// }
-
-// export default End;
-
-
 exports.default = End;
 
 /***/ }),
@@ -500,11 +485,18 @@ var Question = function Question(props) {
       question
     ),
     _react2.default.createElement(
-      'button',
-      {
-        onClick: props.advance
-      },
-      'Next Question!'
+      'div',
+      { id: 'question-buttons' },
+      _react2.default.createElement(
+        'button',
+        { onClick: props.advance },
+        'Yes'
+      ),
+      _react2.default.createElement(
+        'button',
+        { onClick: props.advance },
+        'No'
+      )
     )
   );
 };
@@ -533,7 +525,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var startText = 'landing page';
+var title = 'am i wrong?';
 
 function spanSplit(str) {
   return str.split('').map(function (letter, i) {
@@ -556,12 +548,12 @@ var Start = function Start(props) {
     _react2.default.createElement(
       'span',
       { className: 'start-title' },
-      spanSplit(startText)
+      spanSplit(title)
     ),
     _react2.default.createElement(
       'p',
-      null,
-      'lorem ipsum'
+      { id: 'start-text' },
+      'Ever wonder if you\'re racist? Maybe you\'ve said some controversial things or offended someone.  Take the quiz and find out.'
     ),
     _react2.default.createElement(
       'button',
