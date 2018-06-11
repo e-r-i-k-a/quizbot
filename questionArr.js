@@ -6,7 +6,7 @@ export const questionArr = [
 		question: 'Do you provide food (milk and meat) or textiles (fiber from your hair)?'
 	},
 	{
-		question: 'Do you have fatty despoits (or "humps") on your body?'
+		question: 'Do you have fatty deposits (or "humps") on your body?'
 	},
 	{
 		question: 'Do you wear a thick coat that insulates you from intense heat?'
