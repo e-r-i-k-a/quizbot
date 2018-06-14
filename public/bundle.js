@@ -121,10 +121,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 
-/***/ "./app/components/End.jsx":
-/*!********************************!*\
-  !*** ./app/components/End.jsx ***!
-  \********************************/
+/***/ "./app/components/Confetti.jsx":
+/*!*************************************!*\
+  !*** ./app/components/Confetti.jsx ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -149,29 +149,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var endText = 'congratulations!';
+var Confetti = function (_Component) {
+  _inherits(Confetti, _Component);
 
-function spanSplit(str) {
-  var midpoint = Math.floor((str.length - 1) / 2);
-  return str.split('').map(function (letter, i) {
-    return _react2.default.createElement(
-      'span',
-      { className: 'end-letter', key: i, style: { '--delay': i <= midpoint ? i : str.length - 1 - i } },
-      letter
-    );
-  });
-}
+  function Confetti(props) {
+    _classCallCheck(this, Confetti);
 
-var End = function (_Component) {
-  _inherits(End, _Component);
-
-  function End(props) {
-    _classCallCheck(this, End);
-
-    return _possibleConstructorReturn(this, (End.__proto__ || Object.getPrototypeOf(End)).call(this, props));
+    return _possibleConstructorReturn(this, (Confetti.__proto__ || Object.getPrototypeOf(Confetti)).call(this, props));
   }
 
-  _createClass(End, [{
+  _createClass(Confetti, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       var canvas = document.getElementById('canvas');
@@ -233,70 +220,116 @@ var End = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var yes = this.props.yes;
-      var no = this.props.no;
-      var paragraph = yes > no ? _react2.default.createElement(
-        'div',
-        { id: 'end-text' },
-        _react2.default.createElement(
-          'p',
-          { id: 'end-heading' },
-          'You\'re definitely a camel!'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Don\'t let anyone tell you that you\'re anything less.'
-        ),
-        _react2.default.createElement(
-          'p',
-          { id: 'emoji' },
-          '\uD83D\uDC2B\uD83D\uDC2B\uD83D\uDC2B'
-        )
-      ) : _react2.default.createElement(
-        'div',
-        { id: 'end-text' },
-        _react2.default.createElement(
-          'p',
-          { id: 'end-heading' },
-          _react2.default.createElement(
-            'bold',
-            null,
-            'You\'re probably a camel!'
-          )
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'There\'s no way to be completely sure.  Even if you\'re not a camel, don\'t let others define what you know yourself to be.'
-        ),
-        _react2.default.createElement(
-          'p',
-          { id: 'emoji' },
-          '\uD83D\uDC2B\uD83D\uDC2B\uD83D\uDC2B'
-        )
-      );
-
-      return _react2.default.createElement(
-        'div',
-        { id: 'end' },
-        _react2.default.createElement('canvas', { id: 'canvas' }),
-        _react2.default.createElement(
-          'div',
-          { id: 'end-title' },
-          _react2.default.createElement(
-            'span',
-            { className: 'end-letters' },
-            spanSplit(endText)
-          ),
-          paragraph
-        )
-      );
+      return _react2.default.createElement('canvas', { id: 'canvas' });
     }
   }]);
 
-  return End;
+  return Confetti;
 }(_react.Component);
+
+exports.default = Confetti;
+
+/***/ }),
+
+/***/ "./app/components/End.jsx":
+/*!********************************!*\
+  !*** ./app/components/End.jsx ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Confetti = __webpack_require__(/*! ./Confetti */ "./app/components/Confetti.jsx");
+
+var _Confetti2 = _interopRequireDefault(_Confetti);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var endText = 'congratulations!';
+
+function spanSplit(str) {
+  var midpoint = Math.floor((str.length - 1) / 2);
+  return str.split('').map(function (letter, i) {
+    return _react2.default.createElement(
+      'span',
+      { className: 'end-letter', key: i, style: { '--delay': i <= midpoint ? i : str.length - 1 - i } },
+      letter
+    );
+  });
+}
+
+var End = function End(props) {
+
+  var yes = props.yes;
+  var no = props.no;
+  var paragraph = yes > no ? _react2.default.createElement(
+    'div',
+    { id: 'end-text' },
+    _react2.default.createElement(
+      'p',
+      { id: 'end-heading' },
+      'You\'re definitely a camel!'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Don\'t let anyone tell you that you\'re anything less.'
+    ),
+    _react2.default.createElement(
+      'p',
+      { id: 'emoji' },
+      '\uD83D\uDC2B\uD83D\uDC2B\uD83D\uDC2B'
+    )
+  ) : _react2.default.createElement(
+    'div',
+    { id: 'end-text' },
+    _react2.default.createElement(
+      'p',
+      { id: 'end-heading' },
+      _react2.default.createElement(
+        'bold',
+        null,
+        'You\'re probably a camel!'
+      )
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'There\'s no way to be completely sure.  Even if you\'re not a camel, don\'t let others define what you know yourself to be.'
+    ),
+    _react2.default.createElement(
+      'p',
+      { id: 'emoji' },
+      '\uD83D\uDC2B\uD83D\uDC2B\uD83D\uDC2B'
+    )
+  );
+
+  return _react2.default.createElement(
+    'div',
+    { id: 'end' },
+    _react2.default.createElement(_Confetti2.default, null),
+    _react2.default.createElement(
+      'div',
+      { id: 'end-title' },
+      _react2.default.createElement(
+        'span',
+        { className: 'end-letters' },
+        spanSplit(endText)
+      ),
+      paragraph
+    )
+  );
+};
 
 exports.default = End;
 
