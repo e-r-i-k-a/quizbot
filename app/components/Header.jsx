@@ -4,7 +4,7 @@ const headerText = 'Am I a camel?'
 const Header = (props) => {
 
   return (
-    <header>{headerText}</header>
+    <header><small>{headerText}</small></header>
   );
 }
 

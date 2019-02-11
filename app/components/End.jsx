@@ -21,7 +21,7 @@ const End = (props) => {
     <div id='end-text'>
       <p id='end-heading'>You're definitely a camel!</p>
       <p>Don't let anyone tell you that you're anything less.</p>
-      <p id='emoji'>&#x1F42B;&#x1F42B;</p>
+      <p id='emoji'>&#x1F42B;&#x1F42B;&#x1F42B;</p>
     </div>
     :
     <div id='end-text'>
