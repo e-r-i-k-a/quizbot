@@ -1,4 +1,5 @@
-//to watch and compile, run: 'stylus -w public/stylus/index.styl -o public/stylesheet.css'
+//stylus -w public/stylus/index.styl -o public/stylesheet.css
+
 @import 'public/stylus/variables'
 
 body
@@ -95,14 +96,12 @@ header, footer
   position absolute
   width 100%
   display flex
-  box-sizing border-box
+  justify-content space-between
 header
   top 0
   justify-content center
   padding 20px
   color purple
-  font-size 1em
-  opacity 0
   text-shadow 1px 1px green, 2px 2px green
   animation fadeIn 1s both
   font-family 'Bungee Shade'
@@ -111,12 +110,7 @@ footer
   font-family 'Gaegu'
 small
   font-size 1.2em
-  width 50%
   padding 20px
-#footer-text1
-  text-align left
-#footer-text2
-  text-align right
 
 @media notPhone
   button:hover

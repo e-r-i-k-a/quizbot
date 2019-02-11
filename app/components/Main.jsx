@@ -1,62 +1,57 @@
 import React, { Component } from 'react';
-import { questionArr } from '../../questionArr.js'
-import Header from './Header'
-import Question from './Question'
-import Start from './Start'
-import End from './End'
+import {connect} from 'react-redux';
+import { questions } from '../../questions';
+import Header from './Header';
+import Question from './Question';
+import Start from './Start';
+import End from './End';
 
-export default class Main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      slide: 0,
-      yes: 0,
-      no: 0
-    }
-    this.advance = this.advance.bind(this);
-  }
-
-  advance(answer) {
-    if (this.state.slide <= questionArr.length) {
-      const nextSlide = this.state.slide + 1
-      if (answer === 'y') {
-        this.setState({ slide: nextSlide,
-        yes: this.state.yes + 1 })
-      }
-      if (answer === 'n') {
-        this.setState({ slide: nextSlide,
-        no: this.state.no + 1 })
-      } else {
-        this.setState({ slide: nextSlide})
-      }
-    }
   }
 
   render() {
-    if (!this.state.slide) {
-      //we have not started yet, so show the landing page
+    const {increment, quiz: {currentPage, lastPage, yes}} = this.props;
+
+    if (currentPage === 0) {
+      //we have not started yet, so show the start page
       return (
         <main>
-          <Start advance={this.advance} />
+          <Start advance={increment}/>
         </main>
       )
-    } else if (this.state.slide === questionArr.length + 1) {
-      //we have asked all the questions, so show the ending page
+    } else if (currentPage === lastPage) {
+      //we have asked all the questions, so show the end page
       return (
         <main>
           <Header />
-          <End yes={this.state.yes} no={this.state.no}/>
+          <End yes={yes} total={questions.length}/>
         </main>
       )
     } else {
-      //show the question that we're on
-      const questionText = questionArr[this.state.slide - 1].question
+      const questionText = questions[currentPage - 1].q
       return (
         <main>
           <Header />
-          <Question questionText={questionText} advance={this.advance} />
+          <Question questionText={questionText} advance={increment} />
         </main>
       )
     }
   }
 }
+
+const mapStateToProps = (state, props) => {
+  return {
+    quiz: state.quiz
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increment: (resp) => dispatch({ type: 'INCREMENT_QUESTION', payload: resp }),
+    decrement: (resp) => dispatch({ type: 'DECREMENT_QUESTION', payload: resp }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

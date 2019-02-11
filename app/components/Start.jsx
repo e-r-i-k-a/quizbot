@@ -2,14 +2,13 @@ import React from 'react';
 
 const title1 = 'am i'
 const title2 = 'a camel?'
-
-function spanSplit(str) {
+const spanSplit= (str) => {
 	return str.split('').map((letter, i) => (
 		letter === ' ' ?
       <span className ='start-letter' key={i}>&nbsp;</span>
       : <span className ='start-letter' key={i} style={{'--delay': str===title1 ? i : title1.length + i}}>{letter}</span>
 	));
-}
+};
 
 const Start = (props) => {
   return (

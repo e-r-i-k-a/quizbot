@@ -7,8 +7,8 @@ const Question = (props) => {
     <div id='question'>
       <p id='question-text'>{question}</p>
       <div id='question-buttons'>
-        <button onClick={()=>props.advance('y')}>Yes</button>
-        <button onClick={()=>props.advance('n')}>No</button>
+        <button onClick={()=>props.advance('yes')}>Yes</button>
+        <button onClick={props.advance}>No</button>
       </div>
     </div>
   );

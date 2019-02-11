@@ -4,11 +4,11 @@ const Footer = (props) => {
 
   return (
     <footer>
-      <small id='footer-text1'>
-        <a href='https://twitter.com/erikacsamuels'>@twitter</a>
+      <small>
+        <a href='https://twitter.com/erisammy' target='_blank'>@twitter</a>
       </small>
-      <small id='footer-text2'>
-        <a href='https://github.com/e-r-i-k-a/quizbot'>@github</a>
+      <small>
+        <a href='https://github.com/e-r-i-k-a/quizbot' target='_blank'>@github</a>
       </small>
     </footer>
   );

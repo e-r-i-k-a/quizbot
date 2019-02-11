@@ -1,5 +1,5 @@
 import React from 'react';
-import Confetti from './Confetti'
+import Confetti from './Confetti';
 
 const endText = 'congratulations!'
 
@@ -12,8 +12,9 @@ function spanSplit(str) {
 
 const End = (props) => {
 
-  const yes = props.yes
-  const no = props.no
+  const yes = props.yes;
+  const no = props.total - yes;
+
   let paragraph = (yes > no) ?
     <div id='end-text'>
       <p id='end-heading'>You're definitely a camel!</p>
