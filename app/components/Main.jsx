@@ -7,9 +7,6 @@ import Start from './Start';
 import End from './End';
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const {increment, quiz: {currentPage, lastPage, yes}} = this.props;
@@ -18,7 +15,7 @@ class Main extends Component {
       //we have not started yet, so show the start page
       return (
         <main>
-          <Start advance={increment}/>
+          <Start increment={increment}/>
         </main>
       )
     } else if (currentPage === lastPage) {
@@ -34,7 +31,7 @@ class Main extends Component {
       return (
         <main>
           <Header />
-          <Question questionText={questionText} advance={increment} />
+          <Question questionText={questionText} increment={increment} />
         </main>
       )
     }
@@ -50,7 +47,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     increment: (resp) => dispatch({ type: 'INCREMENT_QUESTION', payload: resp }),
-    decrement: (resp) => dispatch({ type: 'DECREMENT_QUESTION', payload: resp }),
+    decrement: () => dispatch({ type: 'DECREMENT_QUESTION' }),
   };
 };
 

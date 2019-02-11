@@ -19,7 +19,7 @@ const Start = (props) => {
         <span>{spanSplit(title2)}</span>
       </span>
       <p id='start-text'>Ever wonder if you're a camel? Maybe you have long legs and a big-lipped snout, but you're not sure.  Take the quiz and find out.</p>
-      <button onClick={props.advance}>
+      <button onClick={props.increment}>
         Take the Quiz!
 			</button>
     </div>

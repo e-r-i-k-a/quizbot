@@ -3,12 +3,14 @@ import Confetti from './Confetti';
 
 const endText = 'congratulations!'
 
-function spanSplit(str) {
-  const midpoint = Math.floor((str.length - 1) / 2)
+const spanSplit = (str) => {
+  const midpoint = Math.floor((str.length - 1) / 2);
+
   return str.split('').map((letter, i) => (
-    <span className='end-letter' key={i} style={{ '--delay': i <= midpoint ? i : str.length - 1 - i }}>{letter}</span>
+    <span className='end-letter' key={i}
+      style={{ '--delay': i <= midpoint ? i : str.length - 1 - i }}>{letter}</span>
   ))
-}
+};
 
 const End = (props) => {
 
@@ -19,7 +21,7 @@ const End = (props) => {
     <div id='end-text'>
       <p id='end-heading'>You're definitely a camel!</p>
       <p>Don't let anyone tell you that you're anything less.</p>
-      <p id='emoji'>&#x1F42B;&#x1F42B;&#x1F42B;</p>
+      <p id='emoji'>&#x1F42B;&#x1F42B;</p>
     </div>
     :
     <div id='end-text'>
